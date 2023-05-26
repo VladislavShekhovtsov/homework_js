@@ -1,5 +1,5 @@
 { // Приветствие
-    var userName = prompt("Введите ваше имя:");
+    let userName = prompt("Введите ваше имя:");
 
         alert("Привет, " + userName + "! Добро пожаловать!");
 
@@ -7,9 +7,9 @@
 
 
 { // Блин
-    var userStr = prompt("Введите строку:");
+    let userStr = prompt("Введите строку:");
 
-    var newString = userStr.split(",").join(", блин");
+    let newString = userStr.split(",").join(", блин");
 
     alert(newString);
 }
@@ -66,8 +66,8 @@ alert(result)
 
 {
 
-    let str = "якийсь текст, в якому є один тег <br /> і всяке інше"
-let result = str.indexOf("<>").slice(33, 38)
+    let str = "якийсь текст, в якому є один тег <br /> і всяке інше";
+let result = str.indexOf("<br />") + str.slice(33, 39);
 
 console.log(result) 
 }
