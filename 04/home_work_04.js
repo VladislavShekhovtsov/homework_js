@@ -152,3 +152,54 @@
         alert("Ошибка: неправильный логин.");
     }
 }
+
+{   //  Currency exchange
+    let currency = prompt("Введите валюту (например, USD, EUR):").toUpperCase();
+    let buyOrSell = confirm("Вы хотите купить данную валюту? Если нет, то будет выполнена продажа.");
+
+    let rate;
+
+    if (currency === "USD") {
+        rate = buyOrSell ? 1 / 70 : 70;
+    } else if (currency === "EUR") {
+        rate = buyOrSell ? 1 / 80 : 80;
+    } else {
+        rate = 1; 
+    }
+
+    let amount = parseFloat(prompt("Введите сумму для обмена:"));
+    let result = buyOrSell ? amount / rate : amount * rate;
+
+    console.log("Результат операции:", result);
+
+}
+
+
+{   //  Scissors
+    let userChoice = prompt("Выберите: камень, ножницы или бумагу?").toLowerCase();
+    let computerChoice;
+    
+    let randomNum = Math.floor(Math.random() * 3);
+    
+    if (randomNum === 0) {
+      computerChoice = "камень";
+    } else if (randomNum === 1) {
+      computerChoice = "ножницы";
+    } else {
+      computerChoice = "бумага";
+    }
+    
+    alert("Компьютер выбрал: " + computerChoice);
+    
+    let result =
+      (userChoice === "камень" && computerChoice === "ножницы") ||
+      (userChoice === "ножницы" && computerChoice === "бумага") ||
+      (userChoice === "бумага" && computerChoice === "камень")
+        ? "Вы победили!"
+        : userChoice === computerChoice
+        ? "Ничья!"
+        : "Компьютер победил!";
+    
+    alert(result);
+
+}
