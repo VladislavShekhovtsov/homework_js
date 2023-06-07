@@ -323,7 +323,7 @@
 
 }
 
-{   //  For Brackets Hell Check
+{   //  For Brackets Hell Check 
     const line = prompt("Введите строку со скобками:");
     const bracketsStack = [];
     let i = 0;
