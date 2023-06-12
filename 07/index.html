@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type='number' id="firstNumber" />
+<input type='number' id="secondNumber" />
+<div id="divisionResult">
+    Текст у div
+</div>
+
+<script>
+    const calcResult = () => {
+        const firstNum = parseFloat(firstNumber.value);
+        const secondNum = parseFloat(secondNumber.value);
+        
+        if (isNaN(firstNum) || isNaN(secondNum)) {
+            divisionResult.innerHTML = "Введите числа в оба поля";
+        } else if (secondNum === 0) {
+            divisionResult.innerHTML = "Деление на ноль невозможно";
+        } else {
+            const result = firstNum / secondNum;
+            divisionResult.innerHTML = "Результат деления: " + result;
+        }
+    }
+    
+    firstNumber.oninput = secondNumber.oninput = calcResult;
+</script>
+
+</body>
+</html>
