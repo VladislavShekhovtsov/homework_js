@@ -202,41 +202,31 @@
 };
 
 {   //  personForm
-    function createPersonForm(parentElement, personData) {
-        const { getName, getSurname, getPatronymic, getAge, getFullName, setName, setSurname, setPatronymic, setAge } = personData;
-        const nameInput = document.createElement('input');
-        const surnameInput = document.createElement('input');
-        const patronymicInput = document.createElement('input');
-        const ageInput = document.createElement('input');
-        const fullNameInput = document.createElement('input');
-        nameInput.value = getName();
-        surnameInput.value = getSurname();
-        patronymicInput.value = getPatronymic();
-        ageInput.value = getAge();
-        fullNameInput.value = getFullName();
-        nameInput.oninput = (event) => {
-            setName(event.target.value);
-            fullNameInput.value = getFullName();
-        };
-        surnameInput.oninput = (event) => {
-            setSurname(event.target.value);
-            fullNameInput.value = getFullName();
-        };
-        patronymicInput.oninput = (event) => {
-            setPatronymic(event.target.value);
-            fullNameInput.value = getFullName();
-        };
-        ageInput.oninput = (event) => {
-            setAge(event.target.value);
-        };
-        parentElement.appendChild(nameInput);
-        parentElement.appendChild(surnameInput);
-        parentElement.appendChild(patronymicInput);
-        parentElement.appendChild(ageInput);
-        parentElement.appendChild(fullNameInput);
+    function personForm(parentElement, person) {
+        const nameInput = createInputField('Имя:', person.getName(), person.setName);
+        const surnameInput = createInputField('Фамилия:', person.getSurname(), person.setSurname);
+        const fatherNameInput = createInputField('Отчество:', person.getFatherName(), person.setFatherName);
+        const ageInput = createInputField('Возраст:', person.getAge(), person.setAge);
+        const fullNameInput = createInputField('ФИО:', person.getFullName(), person.setFullName);
+        parentElement.append(nameInput, surnameInput, fatherNameInput, ageInput, fullNameInput);
     }
-    const personData = createPersonClosure(); 
-    const parentElement = document.getElementById('form-container'); 
-    createPersonForm(parentElement, personData);
+    function createInputField(labelText, value, setValue) {
+        const label = document.createElement('label');
+        label.textContent = labelText;
+        const input = document.createElement('input');
+        input.type = 'text';
+        input.value = value;
+        input.addEventListener('input', (event) => {
+            const newValue = event.target.value.trim();
+            const updatedValue = setValue(newValue);
+            input.value = updatedValue !== undefined ? updatedValue : value;
+        });
+        label.appendChild(input);
+        return label;
+    }
+    const parentElement = document.getElementById('form-container');
+    const person = createPersonClosureDestruct({ name: 'John', surname: 'Doe', age: 30 });
+    personForm(parentElement, person);
+
 };
 
