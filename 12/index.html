@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="title">Киоск - Касса: 0</title>
+</head>
+
+<body>
+    <div>
+        <h2>Киоск</h2>
+        <ul id="products-container"></ul>
+        <div>
+            <label for="product-select">Выберите товар:</label>
+            <select id="product-select">
+                <option value="пиво">Пиво</option>
+                <option value="чипсы">Чипсы</option>
+                <option value="шоколад">Шоколад</option>
+            </select>
+        </div>
+        <div>
+            <label for="quantity-input">Количество:</label>
+            <input type="number" id="quantity-input" min="1" step="1" value="1">
+        </div>
+        <div>
+            <label for="funds-input">Средства:</label>
+            <input type="number" id="funds-input" min="0" step="1" value="0">
+        </div>
+        <button id="buy-button">Купить</button>
+        <div>
+            <label for="cash-field">Касса:</label>
+            <input type="number" id="cash-field" min="0" step="1" value="0" readonly>
+        </div>
+    </div>
+
+    <div id="password-container"></div>
+    <script src="./home_work_12.js"></script>
+</body>
+
+</html>
